@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilka Pubgolf</title>
+    <link rel="stylesheet" href="main.css">
+  
+</head>
+<body>
+    <header>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <h1>Bilka Pubgolf</h1>
+    </header>
+
+    <nav id="slide-menu" class="hidden">
+        <div class="menu-header">
+            <span class="back-arrow" onclick="toggleMenu()">←</span>
+        </div>
+        <button onclick="navigateToWithSlide('RandomWheel.html')">Lykkehjul</button>
+        <button onclick="navigateToWithSlide('Scoreboard.html')">Scoreboard</button>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Hvad er pubgolf?</h2>
+            <p>
+                Pubgolf går ud på at vi går fra bar til bar hvor hver bar ses som et hul.
+                Her får alle deltagere serveret samme genstand. Hver deltager skiftens til at tage en tår, 
+                hver tår fungere som et golfslag. Den deltager eller det hold som ender med færrest slag altså tåre vinder.
+            </p>
+        </section>
+        <section>
+            <h2>Program</h2>
+            <p>
+                Vi mødes lørdag den 30 november klokken 19 på Peter Gift.
+                <button onclick="openMap()">Se hvor</button>
+            </p>
+            <p>
+                Her vil vi samles over en øl uden for spillet. Her finder holddannelsen sted via det lykkehjul jeg har lavet.
+                Jeg lover det er fuld pseudorandom :). Her kan vores egne regler kan også indføres, så tænk gerne over nogle sjove regler.
+            </p>
+        </section>
+    </main>
+    <script src="Main.Js"></script>
+</body>
+</html>

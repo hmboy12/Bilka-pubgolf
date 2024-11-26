@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lykkehjul</title>
+    <link rel="stylesheet" href="RandomWheel.css">
+</head>
+<body>
+    <div class="back-arrow">
+        <a href="main.html">&larr; Tilbage</a>
+    </div>
+    <div class="container">
+        <h1>Lykkehjul</h1>
+        <div class="wheel-container">
+            <canvas id="wheelCanvas" width="500" height="500"></canvas>
+            <div id="arrow">▼</div>
+        </div>
+        <div class="spin-button-container">
+            <button id="spinButton">Spin!</button>
+        </div>
+        <div id="result"></div>
+    </div>
+    <div id="confetti-container"></div>
+    <div id="popup" class="hidden"></div>
+    <script src="RandomWheel.js"></script>
+</body>
+</html>

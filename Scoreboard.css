@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh; /* Sikrer at body fylder hele skærmen */
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1; /* Sikrer at containeren strækker sig til at fylde skærmen */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Fjern submit-knappen */
+input[type="submit"] {
+    display: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Tilpasninger for små skærme */
+@media (max-width: 767px) {
+    body {
+        padding: 10px; /* Mindre padding på små skærme */
+    }
+
+    .container {
+        padding: 15px; /* Mindre padding på små skærme for at maksimere pladsen */
+        flex-grow: 1; /* Sikrer at containeren fylder hele skærmen */
+    }
+
+    table, th, td {
+        font-size: 12px;
+    }
+
+    input[type="text"] {
+        font-size: 12px;
+    }
+
+    .back-arrow {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    .back-arrow a {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        background-color: #007bff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-left: 10px; /* Justering af margin for bedre placering */
+        margin-top: 10px;  /* Tilføj margin-top for lidt afstand fra toppen */
+    }
+
+    .back-arrow a:hover {
+        background-color: #0056b3;
+    }
+}
+
+.back-arrow a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.back-arrow a:hover {
+    text-decoration: underline;
+}
