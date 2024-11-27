@@ -14,10 +14,9 @@ body {
 }
 
 .container {
-    background-color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
     width: 100%;
     max-width: 1200px;
     display: flex;
@@ -26,6 +25,14 @@ body {
     flex-grow: 1; /* Sikrer at containeren strækker sig til at fylde skærmen */
 }
 
+/* Fjern al styling for scoreboard-container */
+.scoreboard-container {
+    all: unset; /* Fjern alle styles */
+    display: block; /* Sørg for, at den stadig vises korrekt */
+    width: 100%; /* Fyld hele bredden */
+}
+
+/* Standard tabelstyles */
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -102,6 +109,16 @@ input[type="submit"]:hover {
 
     .back-arrow a:hover {
         background-color: #0056b3;
+    }
+
+    /* Fjern baggrundsfarve fra scoreboard */
+    .scoreboard-container table th,
+    .scoreboard-container table td {
+        background-color: transparent; /* Fjerner baggrundsfarven for tabeloverskrifter og celler */
+    }
+
+    .scoreboard-container table {
+        border: none; /* Fjern tabelrammen */
     }
 }
 
