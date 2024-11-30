@@ -11,6 +11,9 @@ socket.addEventListener('message', (event) => {
         if (inputElement) {
             inputElement.value = value;
         }
+
+        // Opdater totalen, når en score ændres
+        updateTotal(id);
     }
 });
 
@@ -20,28 +23,39 @@ document.querySelectorAll('.score').forEach(input => {
         const id = event.target.id;
         const value = event.target.value;
 
+        // Gem inputværdien i localStorage
+        localStorage.setItem(id, value);
+
         // Send opdateringen til serveren
         socket.send(JSON.stringify({
             type: 'update-score',
             payload: { id, value }
         }));
+
+        // Opdater totalen, når en score ændres
+        updateTotal(id);
     });
-});
 
-// Opdater totalen, når en score ændres
-document.addEventListener("input", function (e) {
-    if (e.target.classList.contains("score")) {
-        const row = e.target.dataset.row;
-        const scores = document.querySelectorAll(`.score[data-row="${row}"]`);
-        let total = 0;
-
-        scores.forEach((score) => {
-            const value = parseInt(score.value, 10);
-            if (!isNaN(value)) {
-                total += value;
-            }
-        });
-
-        document.getElementById(`total${row}`).textContent = total;
+    // Hent og opret værdi fra localStorage, hvis den findes
+    const storedValue = localStorage.getItem(input.id);
+    if (storedValue) {
+        input.value = storedValue;
+        updateTotal(input.id);  // Opdater totalen med de gemte værdier
     }
 });
+
+// Funktion til at opdatere totalen
+function updateTotal(id) {
+    const row = document.getElementById(id).dataset.row;
+    const scores = document.querySelectorAll(`.score[data-row="${row}"]`);
+    let total = 0;
+
+    scores.forEach((score) => {
+        const value = parseInt(score.value, 10);
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+
+    document.getElementById(`total${row}`).textContent = total;
+}
