@@ -68,24 +68,31 @@ document.addEventListener("DOMContentLoaded", () => {
             const elapsedTime = performance.now() - startTime;
             const progress = Math.min(elapsedTime / spinTime, 1);
 
-            speed = startSpeed * (1 - progress);
+            // Langsom nedbremsning
+            speed = startSpeed * (1 - Math.pow(progress, 4)); // Eksponentielt langsommere, mere ekstremt
 
             if (progress < 1) {
                 currentRotation += speed / 100;
                 drawRotatedWheel(currentRotation);
                 requestAnimationFrame(animate);
             } else {
+              
                 const sliceAngle = (2 * Math.PI) / names.length;
+                const finalRotation = currentRotation % (2 * Math.PI);
+
+                // For at få den nordlige position, justerer vi rotationen så pilen er i toppen (0 grader)
+                const normalizedRotation = finalRotation + Math.PI / 2; // Roter mod uret, så pilen peger mod nord
+
+                // Beregn hvilken skive pilen peger på
                 const selectedIndex = Math.floor(
-                    (names.length - (currentRotation / sliceAngle) % names.length) - 0.5
-                ) % names.length;
+                    (names.length - (normalizedRotation / sliceAngle) % names.length) % names.length
+                );
                 const selectedName = names[selectedIndex];
+
                 resultDiv.textContent = `Valgt: ${selectedName}`;
                 showPopup(selectedName);
-                names.splice(selectedIndex, 1); // Fjern valgt navn
-                setTimeout(() => showConfetti(selectedName), 200);
+                showConfetti(selectedName);
                 spinning = false;
-                drawWheel();
             }
         }
 
@@ -124,7 +131,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Håndter klik på spin knappen
-    spinButton.addEventListener("click", spinWheel);
+    spinButton.addEventListener("click", () => {
+        if (!spinning) {
+            // Først fjern navnet, når man spinner igen
+            names.splice(names.indexOf(resultDiv.textContent.replace("Valgt: ", "")), 1);
+            drawWheel();
+            spinWheel();
+        }
+    });
 
     // Initiering
     updateCanvasSize();

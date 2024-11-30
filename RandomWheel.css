@@ -133,7 +133,7 @@ canvas {
     height: 10px;
     background-color: #ff4f4f;
     opacity: 0;
-    animation: confetti-fall 5s infinite;
+    animation: confetti-fall 7s infinite; /* Ændret fra 5s til 7s for langsommere confetti-effekt */
 }
 
 @keyframes confetti-fall {
